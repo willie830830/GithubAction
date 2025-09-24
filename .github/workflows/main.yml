@@ -1,0 +1,35 @@
+name: Checkmarx One Scan
+on:
+  push:
+    branches:
+      - main
+      - master
+      - dev
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout another repo
+        uses: actions/checkout@v4
+        with:
+          repository: willie830830/CxONE_TEST2   # 想要取的 repo
+          ref: main                         # 分支 or tag
+          token: ${{ secrets.GITHUB_TOKEN }} # or PAT
+          path: C:\GithubRunner\actions-runner\REPO            # 放到指定子目錄
+      
+      - name: Checkmarx One CLI Action
+        uses: checkmarx/ast-github-action@main #Github Action version
+        with:
+          project_name: GSS_Willie_Test
+          cx_tenant: galaxysoftware
+          base_uri: https://sng.ast.checkmarx.net
+          branch: github-action-demo
+          cx_client_id: ${{ secrets.CX_CLIENT_ID }}
+          cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
+          additional_params: --tags github_test --report-format pdf --output-name GSS_Report --output-path .
+      
+      - name: Upload Checkmarx Report as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GSS_Report
+          path: GSS_Report.pdf
