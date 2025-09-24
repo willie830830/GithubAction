@@ -16,7 +16,10 @@ jobs:
           ref: main                         # 分支 or tag
           token: ${{secrets.GITHUB_TOKEN}} # or PAT
                     # 放到指定子目錄
-      
+      # - name: Run multiple CMD commands
+      #   run: C:\GithubRunner\cx\cx.exe scan create -s "%ProjectPath%" --project-name %ProjectName% --branch "%BranceName%" --scan-types "sast" --report-format PDF --report-pdf-options Sast --output-name TEST_REPORT --output-path "%ReportPath%"    
+      #   shell: cmd
+
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main #Github Action version
         with:
