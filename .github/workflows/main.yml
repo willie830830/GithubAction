@@ -12,7 +12,7 @@ jobs:
       - name: Checkout another repo
         uses: actions/checkout@v4
         with:
-          repository: willie830830/CxONE_TEST   # 想要取的 repo
+          repository: willie830830/TEST   # 想要取的 repo
           ref: main                         # 分支 or tag
           token: ${{secrets.GITHUB_TOKEN}} # or PAT
                     # 放到指定子目錄
