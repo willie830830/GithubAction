@@ -15,7 +15,7 @@ jobs:
           repository: willie830830/CxONE_TEST2   # 想要取的 repo
           ref: main                         # 分支 or tag
           token: ${{ secrets.GITHUB_TOKEN }} # or PAT
-          path: C:\GithubRunner\actions-runner\REPO            # 放到指定子目錄
+                    # 放到指定子目錄
       
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main #Github Action version
