@@ -14,7 +14,7 @@ jobs:
         with:
           repository: willie830830/CxONE_TEST2   # 想要取的 repo
           ref: main                         # 分支 or tag
-          token: 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 # or PAT
+          token: ${{secrets.GITHUB_TOKEN}} # or PAT
                     # 放到指定子目錄
       
       - name: Checkmarx One CLI Action
